@@ -7,7 +7,7 @@ $ip = isset($_SERVER['HTTP_CLIENT_IP'])
       ? $_SERVER['HTTP_X_FORWARDED_FOR'] 
       : $_SERVER['REMOTE_ADDR']);
 
-# Open the Text-File, write the IP-Address and close it again.
+# Open the Text-File, append the IP-Address and close it again.
 $s2pfile = fopen("/tmp/ip-liste.txt", "a");
 fwrite($s2pfile, $ip."\n");
 fclose($s2pfile);
