@@ -1,3 +1,0 @@
-Diese Datei dient zum testen.
-
-Test,Tet
