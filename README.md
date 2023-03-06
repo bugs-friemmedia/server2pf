@@ -107,14 +107,13 @@ If you like, you can run the Setup in this configuration, but it is advisable, t
 This can be done by the follwing Script created in the Folder `/usr/local/opnsense/service/conf/actions.d/`.
 I called it actions_server2pf.conf. The content of this File is:
 
-...
-[start]
-command:/sbin/pfctl
-parameters:-t server2pf -T expire 604800
-type:script
-description:Cleanup server2pf
-message:cleanup server2pf.
-...
+
+....[start]
+....command:/sbin/pfctl
+....parameters:-t server2pf -T expire 604800
+....type:script
+....description:Cleanup server2pf
+....message:cleanup server2pf.
 
 
 
