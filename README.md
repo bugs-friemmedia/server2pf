@@ -7,7 +7,7 @@ Give your opnsense Firewall the possibility to protect your Server, accessible t
 There are two Scripts working together
 
 - One Script is collecting the IP-Addresses from a Server and wrtie them to a Text-File. In the folder "input-examples" you can find a php-Script as one expample.
-- The python-Script "server2pf.py" is running as a cronjob. It will get the IP-Addresses from the /tmp/ip-list.txt and checks these Addresses with the entry of an external Alias of the opnsense.
+- The python-Script "server2pf.py" is running as a cronjob. It will get the IP-Addresses from the `/tmp/ip-list.txt` and checks these Addresses with the entry of an external Alias of the opnsense.
 
 
 ## Workflow (log description)
@@ -17,7 +17,7 @@ The Input of the python-Script is a simple Text-File with IP-Addresses. These ca
 
 As a simple example, I have added my error-php-Page, which is doing the following:
 
-This php-File is collecting the Client-IP-Address and appends it into a File in the temp-Folder (complete-Path is "/tmp/ip-list.txt"). After that, the Script is executing a redirection to an error-Page called "error.html" located in the same folder.
+This php-File is collecting the Client-IP-Address and appends it into a File in the temp-Folder (complete-Path is `/tmp/ip-list.txt`). After that, the Script is executing a redirection to an error-Page called `error.html` located in the same folder.
 
 I think this is one of the most common use. But you can also create your own Script, which is collection external IP-Addresses and writes them into a Text-File for your Server.
 
@@ -62,13 +62,13 @@ I have tried to give all Information you need to configure the Script at the rig
 
 We will configure the Script with our Data collected so far. Begin with the python Directory in Line 39 (the line begins with "self.server2ip = ..."):
 
-- Line 39 -> 'ip-list': Enter here the path to the IP-List.txt-File (in our example this was "/tmp/ip-list.txt")
+- Line 39 -> 'ip-list': Enter here the path to the IP-List.txt-File (in our example this was `/tmp/ip-list.txt`)
 - Line 40 -> 'external_host': Enter here the FQDN or the URL of your Server.
 - Line 41 -> 'alias': Here must be entered the Name of the External Alias, we have created on the opnsense (in my example this was "server2pf").
-- Line 42 -> 'url_host': Replace "<IP of opnsense>" with the LAN-IP-Address of your opnsense (we expect it to be connected to your LAN. :) )
-- Line 46 -> 'key': Replace "<API-Key of User>" with the content of the first line of the downloaded "apikey.txt"-File from your API-User (everything right of "key=")
-- Line 47 -> 'secret': Replace "<Secret of User>" with the content of the second line of the downloaded "apikey.txt"-File from your API-User (everything right of "secret=")
-- Line 48 -> 'fw-cert': Replace /path/to/Certificate.pem with the path, where you want to store the certificate on the Server. Please beware not to save it in the webroot-Folder!
+- Line 42 -> 'url_host': Replace `<IP of opnsense>` with the LAN-IP-Address of your opnsense (we expect it to be connected to your LAN. :) )
+- Line 46 -> 'key': Replace `<API-Key of User>` with the content of the first line of the downloaded "apikey.txt"-File from your API-User (everything right of "key=")
+- Line 47 -> 'secret': Replace `<Secret of User>` with the content of the second line of the downloaded "apikey.txt"-File from your API-User (everything right of "secret=")
+- Line 48 -> 'fw-cert': Replace `/path/to/Certificate.pem` with the path, where you want to store the certificate on the Server. Please beware not to save it in the webroot-Folder!
 
 Now save the file and transfer the python-File server2pf.py and the certificate .pem-File onto the server.
 
@@ -78,7 +78,7 @@ Move the .pem-File to the folder you have entered into the python-File at Line 4
 ## Testing
 Now you can test the Script.
 
-Just create a File in the Folder (my example /tmp/ip-list.txt) and enter an IP-Address. It should be an IP-Addrress from the Internet. You can also enter a private IP-address in a new line, if you wish.
+Just create a File in the Folder (my example `/tmp/ip-list.txt`) and enter an IP-Address. It should be an IP-Addrress from the Internet. You can also enter a private IP-address in a new line, if you wish.
 
 Save the file.
 
@@ -104,7 +104,7 @@ So, we are collecting IP-Addresses and block them. When you have checked the Log
 
 If you like, you can run the Setup in this configuration, but it is advisable, that you clean the Alias-Table regulary. I have configured a custom Crojob on the opnsense. This cronjob is running every day and deletes IP-Addresses which are older than one week. So this IP-Addresses are blocked for a hole week only.
 
-This can be done by the follwing Script created in the Folder /usr/local/opnsense/service/conf/actions.d/.
+This can be done by the follwing Script created in the Folder `/usr/local/opnsense/service/conf/actions.d/`.
 I called it actions_server2pf.conf. The content of this File is:
 
 ...
