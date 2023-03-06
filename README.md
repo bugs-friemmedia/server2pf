@@ -108,13 +108,14 @@ This can be done by the follwing Script created in the Folder `/usr/local/opnsen
 I called it actions_server2pf.conf. The content of this File is:
 
 
-....[start]
-....command:/sbin/pfctl
-....parameters:-t server2pf -T expire 604800
-....type:script
-....description:Cleanup server2pf
-....message:cleanup server2pf.
-
+```
+[start]
+command:/sbin/pfctl
+parameters:-t server2pf -T expire 604800
+type:script
+description:Cleanup server2pf
+message:cleanup server2pf.
+```
 
 
 To update the System and to tell the GUI, that there is a new File for the cron, you have to execute the following command:
